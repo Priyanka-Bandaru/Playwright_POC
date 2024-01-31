@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { BasePage } from "../pageObject/base.page";
+import { allure } from "allure-playwright";
 require("dotenv").config();
 
 test.describe("POC_UI Automation", () => {
@@ -10,33 +11,47 @@ test.describe("POC_UI Automation", () => {
     page = await browser.newPage();
     basePageObj = new BasePage(page, test);
     await basePageObj.launchApplication(process.env.BASE_URL);
-    await expect(basePageObj.landingPageLogo).toBeVisible();
+    await allure.step("verifying branding logo should be visible", async () => {
+      await expect(basePageObj.landingPageLogo).toBeVisible();
+    });
     await basePageObj.signInIntoApplication(
       process.env.user_name,
       process.env.pass_word
     );
-    await expect(basePageObj.welcomeMessage).toBeVisible();
+    await allure.step("verifying welcome message of application should be visible", async () => {
+      await expect(basePageObj.welcomeMessage).toBeVisible();
+    });
   });
 
   test("Adding Item to cart based on the preference", async () => {
     await basePageObj.serachForItem("watch");
     await basePageObj.applifiltersToSearch();
     currentItemName = await basePageObj.selectItemToAddCart();
-    await expect(basePageObj.productText).toHaveText(currentItemName);
+    await allure.step("verifyed selected item should be open ", async () => {
+      await expect(basePageObj.productText).toHaveText(currentItemName);
+    });
     await basePageObj.addItemToCart();
-    await expect(basePageObj.shippingText).toBeVisible();
+    await allure.step("verifyed item added to shipping ", async () => {
+      await expect(basePageObj.shippingText).toBeVisible();
+    });
     await basePageObj.verifyItemIsadded();
-    await expect(
-      basePageObj.itemAtCart(currentItemName.slice(0, 10))
-    ).toBeVisible();
+    await allure.step("verifyed item is added to cart", async () => {
+      await expect(
+        basePageObj.itemAtCart(currentItemName.slice(0, 10))
+      ).toBeVisible();
+    });
   });
 
   test("To remove items from the cart ", async () => {
-    await expect(basePageObj.welcomeMessage).toBeVisible();
+    await allure.step("verifying welcome message of application should be visible", async () => {
+      await expect(basePageObj.welcomeMessage).toBeVisible();
+    });
     await basePageObj.removeItemFromCart(currentItemName.slice(0, 10));
   });
   test("Sign out of the application", async () => {
-    await expect(basePageObj.welcomeMessage).toBeVisible();
+    await allure.step("verifying welcome message of application should be visible", async () => {
+      await expect(basePageObj.welcomeMessage).toBeVisible();
+    });
     await basePageObj.signOutFromApplication();
   });
 });

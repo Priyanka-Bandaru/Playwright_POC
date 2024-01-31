@@ -1,12 +1,12 @@
 {
-  "name": "installationofplaywright",
+  "name": "targetdocom",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "testUI": "npx playwright test fischer.spec.js",
-    "testAPI": "npx playwright test fischer_api.spec.js",
-    "testAll": "npx playwright test"
+    "testUI": "npx playwright test login.spec.js",
+    "testAPI": "npx playwright test apiTest.spec.js",
+    "test": "npx playwright test"
   },
   "keywords": [],
   "author": "",
