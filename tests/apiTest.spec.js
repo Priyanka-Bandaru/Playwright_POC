@@ -14,16 +14,14 @@ test.describe("POC - Validating API", () => {
       }
       console.log(process.env.api_Baseurl+apiData.current_weather.endPoint+querParam);
     const response = await getResponse(request,process.env.api_Baseurl+apiData.current_weather.endPoint+querParam);
-    await allure.step("Expecting HTTP Response Code as 200 OK", async () => {
+   
       expect(response.ok()).toBe(true);
-    });
+
     const result = await response.json();
-    await allure.step(
-      "Expecting that the 'results' property in the API response should has location name :"+apiData.current_weather.location,
-      async () => {
+   
         expect(result.location.name).toBe(apiData.current_weather.location);
-      }
-    );
+
+   
   });
   test("Api for obtaining  weather forcast report of a location  "+apiData.weather_forecast.location, async ({ request }) => {
     let querParam="?";
@@ -32,15 +30,8 @@ test.describe("POC - Validating API", () => {
         querParam=querParam+x+"="+forcastApiQuerys[x]+"&";
       }
     const response = await getResponse(request,process.env.api_Baseurl+apiData.weather_forecast.endPoint+querParam);
-    await allure.step("Expecting HTTP Response Code as 200 OK", async () => {
       expect(response.ok()).toBe(true);
-    });
     const result = await response.json();
-    await allure.step(
-      "Expecting that the 'results' property in the API response should has location name : "+apiData.weather_forecast.location,
-      async () => {
-        expect(result.location.name).toBe(apiData.weather_forecast.location);
-      }
-    );
+    expect(result.location.name).toBe(apiData.weather_forecast.location);
   });
 })

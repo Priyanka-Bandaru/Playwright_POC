@@ -1,0 +1,20 @@
+<testsuites id="" name="" tests="5" failures="0" skipped="0" errors="0" time="62.72355400000001">
+<testsuite name="apiTest.spec.js" timestamp="2024-02-08T05:16:46.854Z" hostname="chromium" tests="2" failures="0" skipped="0" time="1.473" errors="0">
+<testcase name="POC - Validating API › Api for obtaining current weather report of a location Amsterdam" classname="apiTest.spec.js" time="0.771">
+<system-out>
+<![CDATA[https://api.weatherapi.com/v1/current.json?q=amsterdam&key=8ec0d8ac5c6c40928fe83036240301&
+]]>
+</system-out>
+</testcase>
+<testcase name="POC - Validating API › Api for obtaining  weather forcast report of a location  Bankok" classname="apiTest.spec.js" time="0.702">
+</testcase>
+</testsuite>
+<testsuite name="login.spec.js" timestamp="2024-02-08T05:16:46.854Z" hostname="chromium" tests="3" failures="0" skipped="0" time="41.83" errors="0">
+<testcase name="POC_UI Automation › Adding Item to cart based on the preference" classname="login.spec.js" time="20.654">
+</testcase>
+<testcase name="POC_UI Automation › To remove items from the cart " classname="login.spec.js" time="20.292">
+</testcase>
+<testcase name="POC_UI Automation › Sign out of the application" classname="login.spec.js" time="0.884">
+</testcase>
+</testsuite>
+</testsuites>
